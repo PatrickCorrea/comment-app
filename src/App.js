@@ -17,10 +17,6 @@ function App() {
     setTodosOsComentarios(todosOsComentariosAnteriores);
   };
 
-  function clickDelete() {
-
-  }
-
   return (
     <div className='container'>
       <img className='imagem' src={image} alt="" />
