@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import React from 'react';
+import image from './img/imagem.png';
 import './App.css';
 
 function App() {
+
+  const [comentario, setComentario] = React.useState();
+  const [todosOsComentarios, setTodosOsComentarios] = React.useState([]);
+
+  function conteudoTexteArea(event) {
+    setComentario(event.target.value);
+  };
+
+  function clickNoBotao() {
+    const todosOsComentariosAnteriores = [...todosOsComentarios, comentario];
+
+    setTodosOsComentarios(todosOsComentariosAnteriores);
+  };
+
+  function clickDelete() {
+
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <img className='imagem' src={image} alt="" />
+      <textarea onChange={conteudoTexteArea}></textarea>
+      <button onClick={clickNoBotao}>Comentar</button>
+
+      <ul>
+        {todosOsComentarios.map(coment => (
+          <li key={coment}>{coment}</li>
+        ))}
+      </ul>
     </div>
   );
-}
+};
 
 export default App;
